@@ -30,15 +30,21 @@ def editdatabase_view(request):
 def lifecycle_view(request):
         context = {}
         context['test_msg'] = 'hi this is lifecycle'
+        
+        life_cycle = Lifecycle.objects.all()
+        context['life_cycle'] = life_cycle
     
         if request.method == 'POST':
             form = LifecycleForm(request.POST)
+            context['form'] = form
             if form.is_valid():
                 Lifecycle.objects.create(name=request.POST['name'],carbon_emission_factor=request.POST['carbon_emission_factor'])
                 return render(request, 'lifecycle.html', context)
         else:
-            form = LifecycleForm()          
-        return render(request, 'lifecycle.html', {'form': form})
+            form = LifecycleForm()
+            context['form'] = form
+            
+        return render(request, 'lifecycle.html', context)
 
 def weights_view(request):
     context = {}

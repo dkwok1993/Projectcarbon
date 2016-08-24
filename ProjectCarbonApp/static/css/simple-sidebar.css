@@ -12,6 +12,10 @@
 
 /* Toggle Styles */
 
+.col-lg-12 {
+   padding: 0px;
+}
+
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
