@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="../staticcss/sb-admin.css" rel="stylesheet">
+    <link href="../staticcss/plugins/morris.css" rel="stylesheet">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/simple-sidebar.css" rel="stylesheet">
+
+
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="{% url 'index' %}">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'add_report_view' %}"><b>Add Report</b></a>
+                </li>
+                <li_s>
+                    <a href="{% url 'report_one_view' %}">Report 1</a>
+                 </li_s>
+                 <li>
+                    <a href="{% url 'editdatabase_view' %}">Edit Database</a>
+                 </li>
+                 <li_s>
+                    <a href="{% url 'lifecycle_view' %}">Life Cycle </a>
+                 </li_s>
+                 <li_s>
+                    <a href="{% url 'weights_view' %}">Weights</a>
+                 </li_s>
+                 <li_s>
+                    <a href="{% url 'supplier_specific_view' %}">Supplier Specific</a>
+                 </li_s>
+                 <li_s>
+                    <a href="{% url 'travelingmethods_view' %}">Trveling Methods</a>
+                </li_s>
+                 <li>
+                    <a href="{% url 'editdata_view' %}">Edit Data</a>
+                 </li>
+                 <li_s>
+                    <a href="{% url 'dataabc_view' %}">Data ABC</a>
+                </li_s>
+
+            </ul>
+        </div>
+     
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Homepage </h1>
+                        <br>
+                        <h3><b>Updates</b></h3>
+                        <h3><b>Introduction</b></h3>
+                        <p>This web interface can allow HUDS and Green Harvard to model and quantify the Scope 3 Carbon Emissions of HUDS, resulting in HUDS having direct control over their carbon footprint.</p>
+                        <p>This web interface will provide the staff of the dining hall with information on how to calculate and model purchasing methods. It will include different approaches for determining carbon footprints, such as the average-data method and the hybrid method, and the user can customize this interface by choosing and comparing the results of different methods to allow a more holistic approach to measuring HUDS carbon emissions. Also, it will highlight items with the largest output and include suggestions and recommendations on how to reduce them.  </p>
+                        <br>
+                        <div class="col-lg-12">
+                        <h4>Overview of Upstream GHG Protocool Scope and Emissions</h4>
+                            <table class="table table-hover table">
+                                <thead>
+                                    <tr>
+                                        
+                                        
+                                        <th>Category</th>
+                                        <th>Source of Description</th>
+ 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <tr class="active">
+                                        <td>Purchased Goods & Services</td>
+                                        <td>
+                                        <li>Scope 1 and 2 emissions of a reporting company’s direct suppliers, including outsourced activities, (e.g., contract manufacturing, data centers, outsourced services, etc.) </li>
+                                        </td>
+                                        </tr>
+                                        <tr class="active">
+                                        <td> Capital Goods</td>
+                                        <td>
+                                        <li> Manufacturing/construction of capital equipment owned or controlled by the reporting company </li>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <td> Fuel- and energy-related activities (not included in scope 1 or scope 2)</td>
+                                        <td>
+                                        <li>Extraction, production, and transportation of fuels and energy purchased or acquired by the reporting company in the reporting year, not already accounted for in scope 1 or scope 2: </li>
+                                        </td>
+                                        <tr class="active">
+                                        <td> Upstream transportation and distribution </td>
+                                        <td>
+                                        <li>Transportation and distribution of products purchased by the reporting company in the reporting year between a company’s tier 1 suppliers and its own operations (in vehicles and facilities not owned or controlled by the reporting company) </li>
+                                        <li>Transportation and distribution services purchased by the reporting company in the reporting year, including inbound logistics, outbound logistics (e.g., of sold products), and transportation and distribution between a company’s own facilities (in vehicles and facilities not owned or controlled by the reporting company) </li>                                        
+                                        </td>
+                                        </tr>
+                                        <tr class="active">
+                                        <td> Waste generated in operations - and energy-related activities (not included in scope 1 or scope 2)</td>
+                                        <td>
+                                        <li>Disposal and treatment of waste generated in the reporting company’s operations in the reporting year (in facilities not owned or controlled by the reporting company) </li>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <td> Waste generated in operations - and energy-related activities (not included in scope 1 or scope 2)</td>
+                                        <td>
+                                        <li> Transportation of employees for business-related activities during the reporting year (in vehicles not owned or operated by the reporting company</li>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <td> Employee commuting </td>
+                                        <td>
+                                        <li>Transportation of employees between their homes and their worksites during the reporting year (in vehicles not owned or operated by the reporting company) </li>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <td> Upstream Leased Assets</td>
+                                        <td>
+                                        <li> Operation of assets leased by the reporting company (lessee) in the reporting year and not included in scope 1 and scope 2 – reported by lessee </li>
+                                        </td>                                        
+                                        </tr>
+                                   
+                                </tbody>
+                                </table>
+                                 
+                                <br>
+                                <h4>Overview of Downstream GHG Protocool Scope and Emissions</h4>
+                                <table class="table table-hover table">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Source of Description</th>
+ 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <tr class="active">
+                                        <td>Downstream Transportation and Distribution</td>
+                                        <td><li>Transportation and distribution of products sold by the reporting company in the reporting year between the reporting company’s operations and the end consumer (if not paid for by the reporting company), including retail and storage (in vehicles and facilities not owned or controlled by the reporting company) </li></td>
+                                     
+                                    </tr>
+                                    <tr>
+                                        <td>  Processing of Sold Products </td>
+                                        <td><li>Processing of intermediate products sold in the reporting year by downstream companies (e.g., manufacturers) </li></td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td> Use of Sold Products</td>
+                                        <td><li>End use of goods and services sold by the reporting company in the reporting year</li></td>
+                                      
+                                    </tr>
+                                    <tr>
+                                        <td> End-of-Life Treatment of Sold Products</td>
+                                        <td><li>Waste disposal and treatment of products sold by the reporting company (in the reporting year) at the end of their life </li></td>
+                                     
+                                    </tr>
+                                    <tr class="active">
+                                        <td> Downstream Leased Assets (Not Included in Scope 1 or 2)</td>
+                                        <td><li>Operation of assets owned by the reporting company (lessor) and leased to other entities in the reporting year, not included in scope 1 and scope 2 - reported by lessor </li></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td> Franchises </td>
+                                        <td><li>Operation of franchises in the reporting year, not included in scope 1 and scope 2 – reported by franchisor </li></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Investment</td>
+                                        <td><li>Operation of investments (including equity and debt investments and project finance) in the reporting year, not included in scope 1 or scope 2 </li></td>
+                                    </tr>
+                                </tbody>
+                                
+                                
+                            </table>
+                        </div>
+                        <div class="col-lg-12">
+                        <h3><b>Explanation</b></h3>
+                        <p>Table highlited in grey are the ones applicable to HUDS, so the web interface will only calculate those fields</p>
+                        <p>The web interface has three basic functions: add or edit reports, edit database and edit data. The black sidebar on the left can direct the user to any of the basic functions.</p>
+                        <p>Add report allows the users to calculate scope 3 carbon footprints and the smaller and indented report 1 is a recently created report template. Every time the user adds a new report, the new report will show below  "Add Report".</p>
+                        <p>Edit Database allows the web interface to obtain its emission factors. The user can edit/update the database. "Life Cycle, Weights, Items, Traveling Methods" are databases used for the hybrid method.</p>
+                        <p>Edit Data allows user to edit the previously uploaded purchasing and waste reports. The reports will be updated according to the uploaded data. </p>
+                        <p>Toggle Menu is a feature that allows the sidebar to be hidden. </p>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+</body>
+</html>
