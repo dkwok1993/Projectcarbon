@@ -47,17 +47,24 @@ def lifecycle_view(request):
         return render(request, 'lifecycle.html', context)
 
 def weights_view(request):
-    context = {}
-    context['test_msg'] = 'hi this is weights'
-    if request.method == 'POST':
-        form = WeightsForm(request.POST)
-        if form.is_valid():
-            Weights.objects.create(purchase_unit=request.POST['purchase_unit'],purchase_unit_conversion_rate=request.POST['purchase_unit_conversion_rate'])
-    else:
-        form = WeightsForm()
-    return render(request, 'weights.html', {'form': form})
-
-
+        context = {}
+        context['test_msg'] = 'hi this is weights'
+    
+        weights = Weights.objects.all()
+        context['weights'] = weights
+    
+        if request.method == 'POST':
+            form = WeightsForm(request.POST)
+            context['form'] = form
+            if form.is_valid():
+                Weights.objects.create(purchase_unit=request.POST['purchase_unit'],purchase_unit_conversion_rate=request.POST['purchase_unit_conversion_rate'])
+                return render(request, 'weights.html', context)
+    
+        else:
+            form = WeightsForm()
+            context['form'] = form
+            
+        return render(request, 'weightsx`.html', {'form': context})
 
 def supplier_specific_view(request):
         context = {}

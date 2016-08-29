@@ -13,8 +13,6 @@ class LifecycleForm(forms.Form):
         super(LifecycleForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'lifecycleForm'
-
-
     # Customizes form validation for properties that apply to more
     # than one field.  Overrides the forms.Form.clean function.
     def clean(self):
