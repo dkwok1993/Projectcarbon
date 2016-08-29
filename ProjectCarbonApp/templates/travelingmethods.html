@@ -84,8 +84,25 @@
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>
-            </div>
+                </div>
+                <h4 style="margin-top:30px" >Traveling Method Table</h4>
+                <!-- table --->
+                <table class="table table-hover table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Source of Description</th>
+                    </tr>
+                </thead>   
+                     {% for vehicles_obj in travelingmethods %}
+                    <tr>
+                            <td>{{vehicles_obj.name}}</td>
+                            <td>{{vehicles_obj.carbon_emission_factor}}</td>
+                    </tr>
+                 {% endfor %}             
+                </table>
         </div>
+        
         <!-- /#page-content-wrapper -->
 
     </div>

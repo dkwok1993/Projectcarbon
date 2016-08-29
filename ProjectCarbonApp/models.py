@@ -9,7 +9,7 @@ class Vehicles(models.Model):
     name = models.CharField(max_length=430, null=True)
     carbon_emission_factor = models.DecimalField(max_digits=6, decimal_places=3)
     
-class Supplier_specifc(models.Model):
+class Supplier_specific(models.Model):
     name = models.CharField(max_length=430, null=True)
     supplier_emission_factor = models.DecimalField(max_digits=6, decimal_places=3)
     

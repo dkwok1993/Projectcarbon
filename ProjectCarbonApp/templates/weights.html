@@ -1,8 +1,5 @@
 <!DOCTYPE html>
- <html lang="en">
 {% load staticfiles %}
-
-
 <html lang="en">
 
 <head>
@@ -100,16 +97,14 @@
         </thead>   
              {% for weights_obj in weights %}
             <tr>
-                    <td>{{Weights_obj.purchase_unit}}</td>
-                    <td>{{Weights_obj.purchase_unit_conversion_rate}}</td>
+                    <td>{{weights_obj.purchase_unit}}</td>
+                    <td>{{weights_obj.purchase_unit_conversion_rate}}</td>
             </tr>
          {% endfor %}             
         </table>
         
         
     </div>
-    <!-- /#page-content-wrapper -->
-
 </div>
 
 <script src="../static/js/jquery.js"></script>

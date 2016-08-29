@@ -64,23 +64,34 @@ def weights_view(request):
             form = WeightsForm()
             context['form'] = form
             
-        return render(request, 'weightsx`.html', {'form': context})
+        return render(request, 'weights.html', context)
 
 def supplier_specific_view(request):
         context = {}
         context['test_msg'] = 'hi this is supplier specific'
+        
+        supplier_specific = Supplier_specific.objects.all()
+        context['supplier_specific'] = supplier_specific
+        
         if request.method == 'POST':
             form = supplierspecificForm(request.POST)
+            context['form'] = form
             if form.is_valid():
-                Supplier_specifc.objects.create(name=request.POST['name'],supplier_emission_factor=request.POST['supplier_emission_factor'])
+                Supplier_specific.objects.create(name=request.POST['name'],supplier_emission_factor=request.POST['supplier_emission_factor'])
                 return render(request, 'supplier_specific.html', context)
         else:
             form = supplierspecificForm()
-        return render(request, 'supplier_specific.html', {'form': form})
+            context['form'] = form
+        return render(request, 'supplier_specific.html', context)
 
 def travelingmethods_view(request):
         context = {}
         context['test_msg'] = 'hi this is traveling methods'    
+
+        travelingmethods = Vehicles.objects.all()
+        context['travelingmethods'] = travelingmethods
+
+
         if request.method == 'POST':
             form = VehicleForm(request.POST)
             if form.is_valid():
@@ -88,7 +99,7 @@ def travelingmethods_view(request):
                 return render(request, 'travelingmethods.html', context)
         else:
             form = VehicleForm()
-        return render(request, 'travelingmethods.html', {'form': form})
+        return render(request, 'travelingmethods.html', context)
      
     
 
