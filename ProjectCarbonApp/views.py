@@ -64,7 +64,7 @@ def weights_view(request):
             form = WeightsForm()
             context['form'] = form
             
-        return render(request, 'weightsx`.html', {'form': context})
+        return render(request, 'weights.html', context)
 
 def supplier_specific_view(request):
         context = {}
