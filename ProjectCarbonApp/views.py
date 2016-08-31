@@ -94,11 +94,14 @@ def travelingmethods_view(request):
 
         if request.method == 'POST':
             form = VehicleForm(request.POST)
+            context['form'] = form
             if form.is_valid():
                 Vehicles.objects.create(name=request.POST['vehicle_name'],carbon_emission_factor=request.POST['carbon_emission_factor'])
                 return render(request, 'travelingmethods.html', context)
         else:
             form = VehicleForm()
+            context['form'] = form
+            
         return render(request, 'travelingmethods.html', context)
      
     
