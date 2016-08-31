@@ -6,7 +6,7 @@ from ProjectCarbonApp.models import *
 import re
 
 class LifecycleForm(forms.Form):
-    name = forms.CharField(max_length=20)
+    Name123 = forms.CharField(max_length=20)
     carbon_emission_factor  = forms.DecimalField(max_digits=6, decimal_places=3)
 
     def __init__(self, *args, **kwargs):
