@@ -19,6 +19,13 @@ def report_one_view(request):
 
 def add_report_view(request):
     context = {}
+    form = ReportForm()
+    context['form'] = form
+    if request.method == 'POST':
+        upstream_csv = request['upstream_csv']
+        downstream_csv = request['downstream_csv']
+        
+        
     context['test_msg'] = 'hi this is add report'
     return render(request, 'add_report.html', context)
 

@@ -77,32 +77,25 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Add Report </h1>
                         
-                        <form action="#">
-                                Report Name: <input type="text" name="fullname"><br> 
+                        <form enctype="multipart/form-data" method="post" action="{% url 'add_report_view' %}">
+                                <table>
+                                    {% for field in form.visible_fields %}
+                                        <tr>
+                                            <td>{{field.label_tag}}</td>
+                                            <td>{{field}}</td>
+                                            <td>{{field.errors}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                                {% for field in form.hidden_fields %}
+                                    {{field}} {{field.errors}}
+                                {% endfor %}
+                                {% csrf_token %}
+                                <input type="submit" value="Submit">
                         </form>
-                        
-                        <br><h2> Upstream </h2>
-                        <p>Please specify calcuation scope 3 method</p>
-                        <form action="#" method="POST">
-                        <div>
-                        <input type="checkbox" id="trigger" name="supplier_specific"> Supplier Specific Method<br>
-                        <input type="checkbox" id="trigger" name="hybrid"> Hybrid Method <br>
-                        <input type="checkbox" id="trigger" name="average_data"> Average Data Method<br>
-                        <input type="checkbox" id="trigger" name="spend_based"> Spend Based Method  <br>
-                        </div>   
-                        <div id="hidden_fields">
-                        Please upload a typical purchasing report: <input type="text" id="hidden_field" name="hidden">
-                        </div>
-                        </form>
-                       
 
-                        <h2> Downstream </h2>
-                        
-                        Please upload a typical waste report: <input type="text" id="hidden_field" name="hidden">
-                        
-                        <br><br><input type="submit" value="Next"><br><br>
+
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>

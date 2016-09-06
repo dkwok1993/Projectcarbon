@@ -17,3 +17,7 @@ class Supplier_specific(models.Model):
 class Weights(models.Model):
     purchase_unit = models.CharField(max_length=430, null=True)
     purchase_unit_conversion_rate = models.DecimalField(max_digits=6, decimal_places=3)
+    
+class Report(models.Model):
+    name = models.CharField(max_length=430, default = "")
+    file_url = models.CharField(blank=True, max_length=256)

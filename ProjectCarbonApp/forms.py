@@ -102,4 +102,33 @@ class WeightsForm(forms.Form):
 
         # We must return the cleaned data we got from our parent.
         return cleaned_data
+    
+MAX_UPLOAD_SIZE = 2500000
+class ReportForm(forms.ModelForm):
+    class Meta:
+        model = Report
+        exclude = (
+            'file_url',
+            'name'
+        )
+    
+    upstream_csv = forms.FileField(required=True, label='Upstream CSV file')
+    downstream_csv = forms.FileField(required=True, label='Downstream CSV file')
+    supplier_specific_method = forms.BooleanField(label='Supplier Specific Method')
+    hybrid_method = forms.BooleanField(label='Hybrid Method')
+    avg_data_method = forms.BooleanField(label='Average Data Method')
+    spend_based_method = forms.BooleanField(label='Spend Based Method')
+    
+       
+         
+    def clean_file(self):
+        upstream_csv = self.cleaned_data['upstream_csv']
+        downstream_csv =  self.cleaned_data['downstream_csv']
+        if not upstream_csv or downstream_csv:
+            return None
+        if not upstream_csv.content_type or not upstream_csv.content_type.endswith('csv') or not downstream_csv.content_type.endswith('csv'):
+            raise forms.ValidationError('File type is not csv')
+        if upstream_csv.size > MAX_UPLOAD_SIZE or downstream_csv.size > MAX_UPLOAD_SIZE:
+            raise forms.ValidationError('File too big (max size is {0} bytes)'.format(MAX_UPLOAD_SIZE))
+        return {'upstream_csv': upstream_csv, 'downstream_csv': downstream_csv}
 
