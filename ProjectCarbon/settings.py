@@ -51,6 +51,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'ProjectCarbon.urls'
 
+
+
 WSGI_APPLICATION = 'ProjectCarbon.wsgi.application'
 
 
@@ -63,6 +65,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

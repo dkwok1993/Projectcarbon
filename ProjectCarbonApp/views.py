@@ -6,6 +6,9 @@ from ProjectCarbonApp.models import *
 from ProjectCarbonApp.forms import *
 from django.http import HttpResponseRedirect
 
+import csv
+from collections import defaultdict
+
 
 def index(request):
     context = {}
@@ -18,16 +21,28 @@ def report_one_view(request):
     return render(request, 'report_one.html', context)
 
 def add_report_view(request):
-    context = {}
-    form = ReportForm()
-    context['form'] = form
     if request.method == 'POST':
-        upstream_csv = request['upstream_csv']
-        downstream_csv = request['downstream_csv']
-        
-        
-    context['test_msg'] = 'hi this is add report'
-    return render(request, 'add_report.html', context)
+        print request.FILES
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            csv_file = form.cleaned_data['file']
+            reader = csv.DictReader(request.FILES['file'])
+            for row in reader:
+                item_id=row['Item']
+                name=row['Name']
+                purchase_unit=row['Purchase Unit']
+                unit = row['Unit']
+                item = Item(item_id=item_id, name=name,purchase_unit=purchase_unit, units=unit)
+                item.save()
+            form = UploadFileForm()
+            success_msg = 'success file uploaded'
+            return render(request, 'add_report.html', {'form': form, 'success_msg': success_msg})
+            
+            
+    else:
+        form = UploadFileForm()
+    return render(request, 'add_report.html', {'form': form})
+
 
 def editdatabase_view(request):
     context = {}
