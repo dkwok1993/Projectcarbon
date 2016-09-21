@@ -22,7 +22,6 @@ def report_one_view(request):
 
 def add_report_view(request):
     if request.method == 'POST':
-        print request.FILES
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             csv_file = form.cleaned_data['file']
