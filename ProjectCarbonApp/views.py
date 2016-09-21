@@ -24,7 +24,7 @@ def add_report_view(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            csv_file = TextIOWrapper(request.FILES['file'].file, encoding=request.encoding)
+            csv_file = TextIOWrapper(request.FILES['file'].file, encoding='ASCII', errors='replace')
             reader = csv.DictReader(csv_file)
             for row in reader:
                 print row
