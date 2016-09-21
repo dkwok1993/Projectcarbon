@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 
 import csv
 from collections import defaultdict
-
+from io import TextIOWrapper
 
 def index(request):
     context = {}
@@ -24,9 +24,10 @@ def add_report_view(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            csv_file = form.cleaned_data['file']
-            reader = csv.DictReader(request.FILES['file'])
+            csv_file = TextIOWrapper(request.FILES['file'].file, encoding=request.encoding)
+            reader = csv.DictReader(csv_file)
             for row in reader:
+                print row
                 item_id=row['Item']
                 name=row['Name']
                 purchase_unit=row['Purchase Unit']
